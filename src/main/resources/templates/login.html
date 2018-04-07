@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Fitness tracker</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="../static/css/style.css" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<div class="container-fluid" style="background-color: #e9ecef; padding: 10px; margin-bottom: 30px;">
+		<div class="container">
+			<h1 class="display-4">Allen, Bentley, Costner exercise challenge</h1>
+		</div>
+	</div>
+	<div class="container">
+		<!--
+		<div class="col-5 border border-dark rounded mx-auto" id="sign-up" aria-expanded="true">
+			<h1 class="center">Sign Up</h1>
+			-->
+		<div class="col-5 mx-auto">
+			<div th:class="${'collapse multi-collapse' + (type == 'login' ? ' show' : '' ) }" class="collapse show multi-collapse" id="log-in">
+				<div class="card">
+					<div class="card-header">
+						<h1 class="center">Log In</h1>
+					</div>
+					<div class="card-body">
+						<div th:if="${param.error}" class="alert alert-danger text-danger">Invalid username and password.</div>
+						<div th:if="${param.logout}" class="alert alert-success">You have been logged out.</div>
+						<form th:action="@{/login}" method="post">
+							<div class="form-group">
+								<input type="text" name="username" class="form-control" placeholder="Username" required="required">
+							</div>
+							<div class="form-group">
+								<input type="password" name="password" class="form-control" placeholder="Password" required="required">
+							</div>
+
+							<div class="offset-sm-9">
+								<button type="submit" class="btn btn-primary btn-lg">Log in</button>
+							</div>
+						</form>
+						<div style="height: 2.5em;">
+							<div class="float-right" style="padding-top: 15px;">
+								Not a member? <a data-toggle="collapse" href=".multi-collapse">Sign up</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div th:class="${'collapse multi-collapse' + (type == 'register' ? ' show' : '' ) }" class="collapse multi-collapse" id="sign-up">
+				<div class="card">
+					<div class="card-header">
+						<h1 class="center">Sign Up</h1>
+					</div>
+					<div class="card-body">
+						<form th:action="@{/registration}" th:object="${user}" method="POST" class="needs-validation" novalidate id="sign-up-form">
+							<div class="form-group">
+								<input th:field="*{firstName}" type="text" class="form-control" placeholder="First name" required="required">
+							</div>
+							<div class="form-group">
+								<input th:field="*{lastName}" type="text" class="form-control" placeholder="Last name" required="required">
+							</div>
+							<div class="form-group">
+								<input th:field="*{userName}" type=text class="form-control" placeholder="Username" required="required">
+								<p th:text="${userNameError}" class="text-danger">Validation error</p>
+							</div>
+							<div class="form-group">
+								<input th:field="*{password}" type=password class="form-control" placeholder="Password" required="required">
+							</div>
+							<div class="form-group">
+								<input th:field="*{password2}" type=password class="form-control" placeholder="Confirm Password" required="required">
+							</div>
+							
+							<div class="offset-sm-9">
+								<button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+							</div>
+
+						</form>
+						<div style="height: 2.5em;">
+							<div class="float-right" style="padding-top: 15px;">
+								Already a member? <a data-toggle="collapse" href=".multi-collapse">Log in</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script>
+$( "#sign-up-form" ).validate({
+  rules: {
+    password: "required",
+    password2: {
+      equalTo: "#password"
+    }
+  },
+  messages: {
+	  firstname: '<span class="text-danger small">This field is required</span>',
+	  lastname: '<span class="text-danger small">This field is required</span>',
+	  username: '<span class="text-danger small">This field is required</span>',
+	  password: '<span class="text-danger small">This field is required</span>',
+	  password2: {
+		  required: '<span class="text-danger small">This field is required</span>',
+		  equalTo: '<span class="text-danger small">Password does not match!</span>'
+	  }
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+.avatar {
+	display: inline-block;
+    font-size: 2em;
+    width: 2em;
+    height: 2em;
+    line-height: 1.8em;
+    text-align: center;
+    border-radius: 50%;
+    background: darkred;
+    vertical-align: middle;
+    margin-right: 1em;
+    color: white;
+    font-weight: bold;
+    float: left;
+}
+
+.avatar-A {
+	background: darkorange;
+}
+.avatar-B {
+	background: darkred;
+}
+.avatar-C {
+	background: green;
+}
+
+.user {
+	padding-bottom: 1em;
+}
+
+.progress {
+	width: 80%;
+	height: 2em;
+}
+
+.user1-progress {
+	background-color: darkred;
+}
+.user2-progress {
+	background-color: darkblue;
+}
+.user3-progress {
+	background-color: green;
+}
+.user4-progress {
+	background-color: orange;
+}
+
+.user {
+	align-items: center;
+	margin-left: 10px;
+}
+
+.tab-content {
+	padding: 10px;
+	border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0 0 5px 5px;
+}
+
+.total {
+	padding-left: 10px;
+}
+
+.center {
+	text-align: center;
+}
