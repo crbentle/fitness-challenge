@@ -27,15 +27,15 @@ public class UserService {
     public User registerNewUserAccount(UserDTO accountDto) 
       throws EmailExistsException {
          
-        if (userNameExists(accountDto.getUserName())) {  
+        if (userNameExists(accountDto.getUsername())) {  
             throw new EmailExistsException(
               "There is an account with that email adress: "
-              +  accountDto.getUserName());
+              +  accountDto.getUsername());
         }
         User user = new User();
         user.setFirstName(accountDto.getFirstName());
         user.setLastName(accountDto.getLastName());
-        user.setUserName(accountDto.getUserName());
+        user.setUserName(accountDto.getUsername());
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
 
         dao.createNewUser(user);
