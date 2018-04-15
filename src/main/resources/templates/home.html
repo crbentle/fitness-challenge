@@ -34,7 +34,7 @@
 				<div th:each="family,familyIterStat : ${families}" class="user row" data-toggle="tooltip" data-html="true" th:title="${'The ' + family.lastName + 's<br />' + family.durationDisplay}" title="The Bentleys">
         			<div th:text="${family.lastName.substring(0,1)}" th:class="|avatar avatar-${family.lastName.substring(0,1)}|" class="avatar">B</div>
         			<div class="progress">
-						<div th:each="user,userIterStat : ${family.users}" th:class="|progress-bar progress-bar-striped user${familyIterStat.count + userIterStat.count}-progress progress-bar-animated|" class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" th:style="|width: ${(user.totalDuration * 100.0 / maxDuration)}%|" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"><b th:text="${user.firstName + ': ' + user.durationDisplay}">Chris: 4 hrs</b></div>
+						<div th:each="user,userIterStat : ${family.users}" th:id="${#ids.seq('userProgress')}" th:class="|progress-bar progress-bar-striped user${familyIterStat.count + userIterStat.count}-progress progress-bar-animated|" class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" th:style="|width: ${(user.totalDuration * 100.0 / maxDuration)}%|" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"><b th:text="${user.firstName + ': ' + user.durationDisplay}">Chris: 4 hrs</b></div>
 						<!--/*--> 
 						<div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"><b>Debbie: 4 hrs, 30 mins</b></div>
 						<!--*/-->

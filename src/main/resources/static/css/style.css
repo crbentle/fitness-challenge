@@ -33,17 +33,29 @@
 	height: 2em;
 }
 
-.user1-progress {
-	background-color: darkred;
+#userProgress1 {
+	background-color: lime;
 }
-.user2-progress {
+#userProgress2 {
 	background-color: darkblue;
 }
-.user3-progress {
-	background-color: green;
+#userProgress3 {
+	background-color: #10dace;
 }
-.user4-progress {
+#userProgress4 {
+	background-color: fuchsia;
+}
+
+#userProgress5 {
 	background-color: orange;
+}
+
+#userProgress6 {
+	background-color: teal;
+}
+
+#userProgress7 {
+	background-color: darkred;
 }
 
 .user {
